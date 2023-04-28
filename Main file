@@ -1,0 +1,105 @@
+import java.util.Scanner;
+
+class Account{
+    private String Number;
+    private double Balance;
+    private String Name;
+    private String Email;
+    private String PhoneNumber;
+
+    public Account(String Number,double Balance,String Name,String Email,String PhoneNumber){
+        this.Number = Number;
+        this.Balance = Balance;
+        this.Name = Name;
+        this.Email = Email;
+        this.PhoneNumber = PhoneNumber;
+    }
+
+    public void DepositMoney(double DepositedMoney){
+        this.Balance+=DepositedMoney;
+        System.out.println("Deposit is Successful, new Balance is " +this.Balance);
+    }
+
+    public void WithDrawMoney(double WithdrawalMoney){
+        if(this.Balance - WithdrawalMoney < 0){
+            System.out.println("WithDraw Unseccessful,Please deposit and withdraw " + this.Balance+" is left");
+        }else {
+            this.Balance-=WithdrawalMoney;
+            System.out.println("Withdraw successful, Current Balance is "+this.Balance);
+        }
+    }
+
+    public String getNumber() {
+        return Number;
+    }
+
+    public void setNumber(String number) {
+        Number = number;
+    }
+
+    public double getBalance() {
+        return Balance;
+    }
+
+    public void setBalance(double balance) {
+        Balance = balance;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public String getPhoneNumber() {
+        return PhoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        PhoneNumber = phoneNumber;
+    }
+}
+public class App 
+{
+	public static void main(String[] args) 
+	{
+			Scanner scn = new Scanner(System.in);
+			System.out.println("Enter Account number: ");
+			String acc=scn.next();
+			System.out.println("Enter User Name: ");
+			String name=scn.next();
+			System.out.println("Enter Mail-ID: ");
+			String mail=scn.next();
+			System.out.println("Enter Mobile number ");
+			String mno=scn.next();    
+			Account customer1= new Account(acc,0,name,mail,mno);
+			System.out.println("press 1 for depositMoney\npress 2 for withdrawMoney");
+			int count=scn.nextInt();
+			if(count==1) 
+			{
+				System.out.println("Enter money to deposit");
+			double money=scn.nextDouble();
+		        customer1.DepositMoney(money);
+			}
+			else if(count==2)
+			{
+				System.out.println("Enter money to withdraw");
+				double money=scn.nextDouble();
+	        customer1.WithDrawMoney(money);	
+			}
+			else  
+			{
+				System.out.println("Please Enter valid input");
+			}
+		}	        
+	}
